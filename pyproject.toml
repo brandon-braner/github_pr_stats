@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pull_request_stats"
+version = "0.1.0"
+description = ""
+authors = ["Brandon Braner <brandon.braner@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.27.1"
+jupyter = "^1.0.0"
+aiohttp = "^3.8.1"
+pandas = "^1.4.2"
+python-dotenv = "^0.20.0"
+pytest = "^7.1.1"
+aiodns = "^3.0.0"
+python-dateutil = "^2.8.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
