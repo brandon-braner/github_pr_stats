@@ -1,0 +1,30 @@
+{
+  repository(name: "oe-poet", owner: "torqata") {
+    name
+    createdAt
+    pullRequests(
+      states: [CLOSED]
+      last: 100
+      orderBy: {field: CREATED_AT, direction: DESC}
+    ) {
+      nodes {
+        id
+        number
+        changedFiles
+        createdAt
+        closedAt
+        timelineItems(last: 100, itemTypes: [ISSUE_COMMENT]) {
+          nodes {
+            ... on IssueComment {
+              __typename
+              author {
+                login
+              }
+              createdAt
+            }
+          }
+        }
+      }
+    }
+  }
+}

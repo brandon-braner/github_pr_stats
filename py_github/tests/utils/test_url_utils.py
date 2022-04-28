@@ -1,5 +1,3 @@
-import pytest
-
 from py_github.utils.url_utils import get_query_string, get_query_string_value
 
 
@@ -16,5 +14,3 @@ def test_get_query_string_value():
 
     assert query_string_value == '5'
     assert query_string_value_not_first == ['5']
-
-

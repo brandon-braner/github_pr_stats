@@ -1,8 +1,11 @@
+from time import sleep
+from datetime import datetime, date
+
 import requests
-import aiohttp
-from .utils.url_utils import get_query_string_value
-from datetime import datetime, date, timedelta
 from dateutil.relativedelta import relativedelta
+
+from .utils.url_utils import get_query_string_value
+
 
 class PyGithub:
 
@@ -34,7 +37,8 @@ class PyGithub:
 
     def get_repo_pull_requests(self, repo_full_name: str, state: str, length_in_months):
         """Get Pull Requests for a repo in a specific status going back x amount of months."""
-        url = f"{self.base_url}/repos/{repo_full_name}/pulls"
+        # url = f"{self.base_url}/repos/{repo_full_name}/pulls"
+        url = f"{self.base_url}/search/issues?q=repo:{repo_full_name}+is:pr+is:{state}"
         response = requests.get(f"{url}", auth=(self.user, self.token))
         prs = response.json()
         if len(prs) == 0:
@@ -50,5 +54,7 @@ class PyGithub:
             if open_date >= max_pr_open_date:
                 valid_prs.append(pr)
 
-        return prs
-        # return list()
+        return valid_prs
+
+    def get_pr_timeline(self, pr_id: int):
+        ...
